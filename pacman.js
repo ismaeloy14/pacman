@@ -31,19 +31,23 @@ var mapa = [
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 ];
 
-var fantasma1 = "F";
-var fantasma2 = "F";
-var fantasma3 = "F";
-var jugador = "Z";
+var fantasma1;
+var fantasma2;
+var fantasma3;
+var jugador;
 
 
-var   ARRIBA = 3,
+var   ARRIBA = 1,
       IZQUIERDA = 2,
-      ABAJO = 5,
+      ABAJO = 3,
       DERECHA = 4;
-
-
-
+/*
+    Arrow keys codigos
+    IZQ: 37
+    DER: 39
+    ARR: 38
+    ABJ: 40
+*/
 
 function mostrarMapa(){
     var map = "";
@@ -70,22 +74,91 @@ function mostrarMapa(){
 
 mostrarMapa();
 posFantasmaIni();
+pacman();
 
 function posFantasmaIni(){
-    var map="";
-    for(var i=1;i<=3;i++){
+    //var map="";
+    
         var avanza = false;
         
         do{
             var x = Math.floor(Math.random() * mapa.length);
             var y = Math.floor(Math.random() * mapa[0].length);
+            
+            direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            
+            
+            if (mapa[x+1][y]==0){
+                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            }
+            if (mapa[x][y+1]==0){
+                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            }
+            if (mapa[x-1][y]==0){
+                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            }
+            if (mapa[x][y-1]==0){
+                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            }
+            
+            
                 if (mapa[x][y]==1){
+                    fantasma1 = mapa[x][y];
                     mapa[x][y]="F";
                     avanza = true;
                 }
         }while(avanza==false);
+    
+        do{
+            var x = Math.floor(Math.random() * mapa.length);
+            var y = Math.floor(Math.random() * mapa[0].length);
+            
+            direccionIniFan2 = Math.floor(Math.random() * (5-1)+1);
+            
+            if (mapa[x+1][y]==0){
+                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            }
+            if (mapa[x][y+1]==0){
+                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            }
+            if (mapa[x-1][y]==0){
+                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            }
+            if (mapa[x][y-1]==0){
+                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            }
+                if (mapa[x][y]==1){
+                    fantasma2 = mapa[x][y];
+                    mapa[x][y]="F";
+                    avanza = true;
+                }
+            }while(avanza==false);
+
+        do{
+            var x = Math.floor(Math.random() * mapa.length);
+            var y = Math.floor(Math.random() * mapa[0].length);
+            
+            direccionIniFan3 = Math.floor(Math.random() * (5-1)+1);
+            
+            if (mapa[x+1][y]==0){
+                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            }
+            if (mapa[x][y+1]==0){
+                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            }
+            if (mapa[x-1][y]==0){
+                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            }
+            if (mapa[x][y-1]==0){
+                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            }
+                if (mapa[x][y]==1){
+                    fantasma3 = mapa[x][y];
+                    mapa[x][y]="F";
+                    avanza = true;
+                }
+            }while(avanza==false); 
         
-        }
     mostrarMapa();
 }
 
@@ -96,15 +169,48 @@ function posFantasmaIni(){
 function pacman (){
     var posicion = null,
         direccion = null;
+    var avanza = false;
+    do{
+            var x = Math.floor(Math.random() * mapa.length);
+            var y = Math.floor(Math.random() * mapa[0].length);
+        
+            direccionJugador = Math.floor(Math.random() * (5-1)+1);
+        
+                if (mapa[x][y]==1){
+                    jugador = mapa[x][y];
+                    mapa[x][y]="Z";
+                    avanza = true;
+                }
+            }while(avanza==false);
+        
+        
+    mostrarMapa();
+    
+}
+
+
+
+
+
+/*
+
+function detectorArrow(e) {                                
+                              
+      console.log(e);      //a la consola podeu veure l'objecte que té dos atributs on s'hi indica la tecla pitjada.                                       
+      }                                                            
+   var element = document.getElementById("all");                  
+   element.addEventListener("keydown", notificaObservador);
+
+
+
+ */
+
         //keyMap[];
     
     /*keyMap[KEY.ARROW_LEFT] = IZQUIERDA;
     keyMap[KEY.ARROW_UP] = ARRIBA;
     keyMap[KEY.ARROW_RIGHT] = DERECHA;
     keyMap[KEY.ARROW_DOWN] = ABAJO;*/
-}
- 
-
 
 /*var KEY{
   ARROW_LEFT: 2,
