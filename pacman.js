@@ -84,21 +84,21 @@ function posFantasmaIni(){
         do{
             var x = Math.floor(Math.random() * mapa.length);
             var y = Math.floor(Math.random() * mapa[0].length);
-            
-            direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            //calcular direccion
+            direccionIniFan1 = direction();
             
             
             if (mapa[x+1][y]==0){
-                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+                direccionIniFan1 = direction();
             }
-            if (mapa[x][y+1]==0){
-                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            else if (mapa[x][y+1]==0){
+                direccionIniFan1 = direction();
             }
-            if (mapa[x-1][y]==0){
-                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            else if (mapa[x-1][y]==0){
+                direccionIniFan1 = direction();
             }
-            if (mapa[x][y-1]==0){
-                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            else if (mapa[x][y-1]==0){
+                direccionIniFan1 = direction();
             }
             
             
@@ -113,19 +113,19 @@ function posFantasmaIni(){
             var x = Math.floor(Math.random() * mapa.length);
             var y = Math.floor(Math.random() * mapa[0].length);
             
-            direccionIniFan2 = Math.floor(Math.random() * (5-1)+1);
+            direccionIniFan2 = direction();
             
             if (mapa[x+1][y]==0){
-                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+                direccionIniFan2 = direction();
             }
-            if (mapa[x][y+1]==0){
-                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            else if (mapa[x][y+1]==0){
+                direccionIniFan2 = direction();
             }
-            if (mapa[x-1][y]==0){
-                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            else if (mapa[x-1][y]==0){
+                direccionIniFan2 = direction();
             }
-            if (mapa[x][y-1]==0){
-                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            else if (mapa[x][y-1]==0){
+                direccionIniFan2 = direction();
             }
                 if (mapa[x][y]==1){
                     fantasma2 = mapa[x][y];
@@ -138,19 +138,19 @@ function posFantasmaIni(){
             var x = Math.floor(Math.random() * mapa.length);
             var y = Math.floor(Math.random() * mapa[0].length);
             
-            direccionIniFan3 = Math.floor(Math.random() * (5-1)+1);
+            direccionIniFan3 = direction();
             
             if (mapa[x+1][y]==0){
-                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+                direccionIniFan3 = direction();
             }
-            if (mapa[x][y+1]==0){
-                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            else if (mapa[x][y+1]==0){
+                direccionIniFan3 = direction();
             }
-            if (mapa[x-1][y]==0){
-                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            else if (mapa[x-1][y]==0){
+                direccionIniFan3 = direction();
             }
-            if (mapa[x][y-1]==0){
-                direccionIniFan1 = Math.floor(Math.random() * (5-1)+1);
+            else if (mapa[x][y-1]==0){
+                direccionIniFan3 = direction();
             }
                 if (mapa[x][y]==1){
                     fantasma3 = mapa[x][y];
@@ -167,15 +167,26 @@ function posFantasmaIni(){
 
 
 function pacman (){
-    var posicion = null,
-        direccion = null;
+
     var avanza = false;
     do{
             var x = Math.floor(Math.random() * mapa.length);
             var y = Math.floor(Math.random() * mapa[0].length);
         
-            direccionJugador = Math.floor(Math.random() * (5-1)+1);
+            direccionJugador = direction();
         
+            if (mapa[x+1][y]==0){
+                direccionJugador = direction();
+            }
+            else if (mapa[x][y+1]==0){
+                direccionJugador = direction();
+            }
+            else if (mapa[x-1][y]==0){
+                direccionJugador = direction();
+            }
+            else if (mapa[x][y-1]==0){
+                direccionJugador = direction();
+            }
                 if (mapa[x][y]==1){
                     jugador = mapa[x][y];
                     mapa[x][y]="Z";
@@ -189,7 +200,16 @@ function pacman (){
 }
 
 
+var a = setInterval(move,2000);
+clearInterval(a);
 
+function move(){
+    
+}
+
+function direction(){
+    Math.floor(Math.random() * (5-1)+1);
+}
 
 
 /*
